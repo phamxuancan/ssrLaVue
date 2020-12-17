@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+         "App\Console\Commands\LeechTruyen"
     ];
 
     /**
@@ -24,7 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $filePath = "test_detail";
         // $schedule->command('inspire')->hourly();
+        //$schedule->command('truyen:leech')->everyMinute()->sendOutputTo($filePath);
+        $schedule->command('truyen:leech_detail')->everyMinute()->sendOutputTo($filePath);
     }
 
     /**

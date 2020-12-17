@@ -206,7 +206,7 @@ export default {
   mounted() {
     this.id = this.$route.params.id;
     this.slug = this.$route.params.slug;
-    axios
+    this.$axios
       .get("api/truyenInfo/" + this.id)
       .then(res => {
         this.theloai = res.data.theloai;

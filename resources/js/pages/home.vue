@@ -342,7 +342,7 @@ export default {
     };
   },
   mounted() {
-    axios
+    this.$axios
       .get("api/common/info")
       .then(res => {
         if (res.data) {
