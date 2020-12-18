@@ -116,6 +116,7 @@ class TruyenService
         try{
             $headers[] = 'Connection: keep-alive';
             $headers[] = 'Cache-Control: max-age=0';
+            $headers[] = 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36';
             
             $c = curl_init($url);
             curl_setopt($c, CURLOPT_SSL_VERIFYPEER,false);
@@ -147,12 +148,14 @@ class TruyenService
         $loai = "truyenfull";
         $page = $this->getListChap($urlChuongTruyen);
         $html = HtmlDomParser::str_get_html($page);
+		
         foreach($html->find('a[class=chapter-title]') as $element)
         {
             $textchuong = str_replace(" ", "",trim($element->plaintext));
             $titlechuong = trim($element->title);
             
         }
+		$noidungchuong = "";
         foreach($html->find('div.chapter-c') as $element)
         {
             $noidungchuong = $element->innertext;

@@ -5,11 +5,11 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
                     <ul class="page-breadcrumb breadcrumb">
                         <li>
-                            <a title="Đọc truyện online" href="trang-chu/">Home</a>
+                            <a title="Đọc truyện online" href="/">Home</a>
                             <i class="fa fa-circle"></i>
                         </li>
                         <li>
-                            <router-link :title="'Thể loại' + theloai.ten" :to="{name:'home'}">{{ theloai.ten}}</router-link>
+                            <router-link :title="'Thể loại' + theloai.ten" :to="{name:'Home'}">{{ theloai.ten}}</router-link>
                             <i class="fa fa-circle"></i>
                         </li>
                         <li>
@@ -83,7 +83,7 @@
 				                                            	<div id="listchuong">
 				                                            	<ul class="list-unstyled">
 																	<li v-for="(chap, index) in listChap" :key="index">
-																		<span class="fa fa-book"></span> <router-link :title="chap.textchuong" :to="chap.linkchuong">{{chap.textchuong}}</router-link> 
+																		<span class="fa fa-book"></span> <router-link :title="chap.textchuong" :to="{name:'DocTruyen',params:{slug:slug,id:id,chuong:chap.linkchuong}}">{{chap.textchuong}}</router-link> 
 																	</li>
 				                                           		</ul>
 				                                             	</div>
