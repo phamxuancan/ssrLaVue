@@ -18,9 +18,11 @@
         <link href="{{ asset('css/layouts/layout4/css/layout.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/layouts/layout4/css/themes/light.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/layouts/layout4/css/custom.min.css') }}" rel="stylesheet" type="text/css">
+		<link href="{{ asset('css/nouislider.css') }}" rel="stylesheet">
     </head>
     <body class="page-container-bg-solid page-sidebar-closed-hide-logo">
          {!! $ssr !!}
         <script src="{{ asset('js/entry-client.js') }}" type="text/javascript"></script>
+		<script src=""></script>
     </body>
 </html>

@@ -9,7 +9,7 @@
                             <i class="fa fa-circle"></i>
                         </li>
                         <li>
-                             <router-link :title="'Thể loại' + theloai.ten" :to="{name:'home'}">{{ theloai.ten}}</router-link>
+                             <router-link :title="'Thể loại' + theloai.ten" :to="{name:'Home'}">{{ theloai.ten}}</router-link>
                             <i class="fa fa-circle"></i>
                         </li>
                         <li>
@@ -50,8 +50,8 @@
 	                                    </div>
                                    </div>
                                    
-                                   
-                                   <div id="kichthuoc" class="noUi-success"></div>
+									<button @click="test()"></button>
+                                   <div id="kichthuoc" ref="kichthuoc" class="noUi-success"></div>
                                   
                                    
                              		<div id="noidungchap" v-html="noidung">
@@ -169,6 +169,7 @@
             <!-- END CONTENT -->
 </template>
 <script>
+import noUiSlider from 'nouislider';
 export default {
   data() {
     return {
@@ -183,9 +184,11 @@ export default {
     };
   },
   mounted() {
+  
+
     this.id = this.$route.params.id;
     this.slug = this.$route.params.slug;
-    axios
+    this.$axios
       .get("api/doc-truyen/" + this.id + "/" + this.$route.params.chuong)
       .then(res => {
         this.theloai = res.data.theloai;
@@ -198,7 +201,23 @@ export default {
       .catch(error => {
         console.log(error);
       });
-  }
-};
+  },
+  methods:{
+  test(){
+	  const slider = this.$refs.kichthuoc;
+  console.log(slider)
+  noUiSlider.create(slider, {
+   start: [20, 80],
+   connect: true,
+   step: 1,
+   range: {
+     'min': 0,
+     'max': 100
+   },
+
+  });
+	}
+}
+}
 </script>
 

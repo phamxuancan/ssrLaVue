@@ -13,4 +13,4 @@ use App\Http\Controllers\AppController;
 |
 */
 
-Route::get('/',[AppController::class,"get"]);
+Route::get('/{any}',[AppController::class,"get"])->where('any', '.*');
