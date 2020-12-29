@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $filePath = "test_detail";
         // $schedule->command('inspire')->hourly();
-        //$schedule->command('truyen:leech')->everyMinute()->sendOutputTo($filePath);
+       // $schedule->command('truyen:leech')->everyMinute()->sendOutputTo($filePath);
         $schedule->command('truyen:leech_detail')->everyMinute()->sendOutputTo($filePath);
     }
 

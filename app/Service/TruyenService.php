@@ -53,13 +53,12 @@ class TruyenService
                 	
             }
         $truyen_moi = Truyen::orderBy("updated_at","desc")->limit(12)->get();
-        $id_ngontinh = TheLoai::where("idtheloai",41)->limit(6)->pluck("idtruyen");  
-        $ngon_tinh = $this->getTruyenTheLoai(41);
-        $tien_hiep = $this->getTruyenTheLoai(44);
-        $kiem_hiep = $this->getTruyenTheLoai(43);
-        $do_thi = $this->getTruyenTheLoai(47);
-        $trinh_tham = $this->getTruyenTheLoai(40);
-        $tham_hiem = $this->getTruyenTheLoai(27);
+        $ngon_tinh = $this->getTruyenTheLoai(4);
+        $tien_hiep = $this->getTruyenTheLoai(6);
+        $kiem_hiep = $this->getTruyenTheLoai(1);
+        $do_thi = $this->getTruyenTheLoai(21);
+        $trinh_tham = $this->getTruyenTheLoai(25);
+        $tham_hiem = $this->getTruyenTheLoai(38);
         return response()->json(array(
             "total_truyen"=> $total_truyen,
             "total_chap"=> $total_truyen*3000,
@@ -86,7 +85,10 @@ class TruyenService
         $theloaiid = TheLoai::where("idtruyen",$id)->first();
         $tentruyen = $truyen->tentruyen;
         $urltruyen = $truyen->url;
-        $idTheLoai = $theloaiid->idtheloai;
+		$idTheLoai = 1;
+		if($theloaiid){
+			$idTheLoai = $theloaiid->idtheloai;	
+		}
         $theloai = DSTheLoai::find($idTheLoai);
         $loai = "truyenfull";
         $page2 = $this->getListChap($urltruyen);
@@ -168,4 +170,14 @@ class TruyenService
             "titlechuong"=> $titlechuong,
         ));
     }
+	public function getTruyenMoi(){
+		$truyen_moi = Truyen::orderBy("updated_at","desc")->paginate(30);
+		return $truyen_moi;
+	}
+	public function getTruyenCate($cate){
+		$id_theloai  = DSTheLoai::where('tenurl', $cate)->first();
+		$id_truyen = TheLoai::where("idtheloai", $id_theloai->id)->pluck("idtruyen");
+		$truyen_cate = Truyen::whereIn("id", $id_truyen)->orderBy("updated_at","desc")->paginate(30);
+		return response()->json(array("data"=> $truyen_cate,"theloai"=> $id_theloai->ten));
+	}
 }

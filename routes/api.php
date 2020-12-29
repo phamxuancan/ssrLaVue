@@ -23,3 +23,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('common/info',[TruyenController::class,"commonInfo"]);
 Route::get('truyenInfo/{id}',[TruyenController::class,"truyenInfo"]);
 Route::get('doc-truyen/{id}/{chuong}',[TruyenController::class,"docTruyen"]);
+Route::get('truyen/moi-nhat',[TruyenController::class,"getTruyenmoi"]);
+Route::get('truyen-category/{category}',[TruyenController::class,"getTruyenCate"]);

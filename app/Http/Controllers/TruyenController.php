@@ -20,4 +20,10 @@ class TruyenController extends Controller
     public function docTruyen(TruyenService $truyenService, $id, $chuong){
         return $truyenService->docTruyen($id, $chuong);
     }
+	public function getTruyenmoi(TruyenService $truyenService){
+        return $truyenService->getTruyenmoi();
+    }
+	public function getTruyenCate(TruyenService $truyenService, $cate){
+        return $truyenService->getTruyenCate($cate);
+    }
 }

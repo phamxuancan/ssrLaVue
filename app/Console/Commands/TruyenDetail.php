@@ -97,9 +97,9 @@ class TruyenDetail extends Command
                     ]);
                 }
             }
-             $gioithieu = str_replace("'", "\"", $gioithieu);
+            // $gioithieu = str_replace("'", "\"", $gioithieu);
                 
-                $gioithieu = htmlentities($gioithieu);
+             //   $gioithieu = htmlentities($gioithieu);
 				
                 if (strpos($gioithieu, 'xF0\x9F\x8D\x80\xF0\x9F') == false) {
                     Truyen::where("id", $idtruyen)->update([
